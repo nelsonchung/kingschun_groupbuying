@@ -56,6 +56,10 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>允許拍照的存取權限，已利拍攝商品圖</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>允許相片簿的存取權限，已利選取商品圖</string>
 
 </dict>
 </plist>
