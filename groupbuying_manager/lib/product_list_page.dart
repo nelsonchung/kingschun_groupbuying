@@ -50,20 +50,11 @@ class _ProductListPageState extends State<ProductListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF4CAD73),
+      //KingsChun團購網
       appBar: AppBar(
-        title: Row(
-          children: [
-            Icon(Icons.fastfood),
-            SizedBox(width: 8),
-            Text('KingsChun團購網'),
-          ],
-        ),
-        actions: [
-          Icon(Icons.mail_outline),
-          SizedBox(width: 16),
-          Icon(Icons.notifications_none_outlined),
-        ],
-        backgroundColor: Color(0xFF4CAD73),
+        title: Text('KingsChun團購網', style: TextStyle(color: Colors.white)), // 字串顏色為白色
+        backgroundColor: Color(0xFF4CAD73),  // 背景顏色與 product_list_page.dart 一致
+        elevation: 0,
       ),
       body: Column(
         children: [

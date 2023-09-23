@@ -19,6 +19,7 @@
 import 'package:flutter/material.dart';
 import 'add_product.dart';
 import 'product_list_page.dart';
+import 'profile_page.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -27,14 +28,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _currentIndex = 2;  // 預設為 Home 頁面
+  int _currentIndex = 0;  // 預設為 Home 頁面
 
   List<Widget> _pages = [
     ProductListPage(),                                          // inventory_page
-    Center(child: Icon(Icons.info, size: 100.0)),               // information_page
-    Center(child: Icon(Icons.home, size: 100.0)),               // Home
+    //Center(child: Icon(Icons.info, size: 100.0)),               // information_page
+    //Center(child: Icon(Icons.home, size: 100.0)),               // Home
     AddProductPgae(),                                           // upload_page
-    Center(child: Icon(Icons.manage_accounts, size: 100.0)),    // personal_page
+    ProfilePage(),                                              // personal_page
   ];
 
   @override
@@ -55,6 +56,7 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(Icons.inventory),
             label: 'Inventory',
           ),
+          /*
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
             label: 'Info',
@@ -63,6 +65,7 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
+          */
           BottomNavigationBarItem(
             icon: Icon(Icons.cloud_upload),
             label: 'Upload',

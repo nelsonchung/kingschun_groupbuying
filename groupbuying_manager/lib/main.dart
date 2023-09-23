@@ -44,6 +44,37 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: height * 0.05),  // 使用螢幕高度的 2%
+            /*
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned(
+                  left: 0,
+                  child: Image.asset('assets/man_leftside.png', width: width * 0.4),
+                ),
+                Positioned(
+                  right: 0,
+                  child: Image.asset('assets/woman_rightside.png', width: width * 0.2),
+                ),
+              ],
+            ),
+            */
+//
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Positioned(
+                  left: 150,
+                  child: Image.asset('assets/man_leftside.png', width: width * 0.4),
+                ),
+                Positioned(
+                  right: 150,
+                  child: Image.asset('assets/woman_rightside.png', width: width * 0.2),
+                ),
+              ],
+            ),
+//            
+            /*
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -51,13 +82,15 @@ class MyHomePage extends StatelessWidget {
                 Image.asset('assets/woman_rightside.png', width: width * 0.2),  // 使用螢幕寬度的 20%
               ],
             ),
+            */
+            SizedBox(height: height * 0.05),  // 使用螢幕高度的 2%
             Padding(
-              padding: EdgeInsets.all(height * 0.04),  // 使用螢幕高度的 2%
+              padding: EdgeInsets.all(height * 0.05),  // 使用螢幕高度的 2%
               child: Text(
                 'KingsChun購物網是一個平台\n讓你輕鬆容易地macbook pro, \nmacbook air, ipad, iphone\n二手交易的apps',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.montserratAlternates(
-                  fontSize: width * 0.06,  // 使用螢幕寬度的 4%
+                  fontSize: width * 0.04,  // 使用螢幕寬度的 4%
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),

@@ -24,6 +24,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+const double title_fontsize = 16.0;
 
 class Product {
 	final String? name;
@@ -139,7 +140,7 @@ Future<void> uploadProductToFirebase() async {
 					backgroundColor: Color(0xFF4CAD73),
 					appBar: AppBar(
 						backgroundColor: Color(0xFF4CAD73),
-						title: Text('File Upload App'),
+						title: Text('新增商品'),
 						),
 					body: Padding(
 						padding: const EdgeInsets.all(16.0),
@@ -152,14 +153,14 @@ Future<void> uploadProductToFirebase() async {
 									children: [
 									ElevatedButton(
 										style: ElevatedButton.styleFrom(primary: Color(0xFF4CAD73)),
-										child: Text('拍照', style: TextStyle(fontSize: 20)),
+										child: Text('拍照', style: TextStyle(fontSize: 18)),
 										onPressed: () {
 										getImage(true);
 										},
 										),
 									ElevatedButton(
 										style: ElevatedButton.styleFrom(primary: Color(0xFF4CAD73)),
-										child: Text('選擇圖片', style: TextStyle(fontSize: 20)),
+										child: Text('選擇圖片', style: TextStyle(fontSize: 18)),
 										onPressed: () {
 										getImage(false);
 										},
@@ -180,7 +181,7 @@ Future<void> uploadProductToFirebase() async {
 						     ),
 					Align(
 							alignment: Alignment.centerLeft,          
-							child: Text('商品標題', style: TextStyle(fontSize: 20, color: Colors.white)),
+							child: Text('商品標題', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
 					     ),
 					TextField(
             controller: nameController,
@@ -200,7 +201,7 @@ Future<void> uploadProductToFirebase() async {
 						     ),
 					Align(
 							alignment: Alignment.centerLeft,
-							child: Text('商品描述', style: TextStyle(fontSize: 20, color: Colors.white)),
+							child: Text('商品描述', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
 					     ),
 					TextField(
               controller: descriptionController,
@@ -222,7 +223,7 @@ Future<void> uploadProductToFirebase() async {
 					// 數量的CupertinoPicker
 					Align(
 							alignment: Alignment.centerLeft,
-							child: Text('數量', style: TextStyle(fontSize: 20, color: Colors.white)),
+							child: Text('數量', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
 					     ),
 					Container(
 							height: 100.0,
@@ -235,7 +236,7 @@ Future<void> uploadProductToFirebase() async {
                     });
 								},
                 children: List<Widget>.generate(99, (int index) {
-                      return Text('${index + 1}', style: TextStyle(color: Colors.white, fontSize: 20.0));
+                      return Text('${index + 1}', style: TextStyle(color: Colors.white, fontSize: title_fontsize));
                       }),
                 ),
 						 ),
@@ -250,29 +251,40 @@ Future<void> uploadProductToFirebase() async {
 					// 價格的CupertinoPicker
 					Row(
 							children: <Widget>[
-							Align(
-								alignment: Alignment.centerLeft,
-								child: Text('價格', style: TextStyle(fontSize: 20, color: Colors.white)),
-							     ),
-							SizedBox(width: 16),  // 提供一些間距
-							Expanded(  // 使用 Expanded 讓 TextField 可以佔用 Row 中剩餘的空間
-								child: TextField(
-                  					controller: priceController,
-									keyboardType: TextInputType.number,  // 設定鍵盤類型為數字
-									decoration: InputDecoration(
-										hintText: '輸入價格',
-										filled: true,
-										fillColor: Colors.white,
-										border: OutlineInputBorder(),
+								Align(
+									alignment: Alignment.centerLeft,
+									child: Text('價格', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
+									),
+								SizedBox(width: 16),  // 提供一些間距
+								//
+								Expanded(
+									child: TextField(
+										decoration: InputDecoration(
+											hintText: '輸入價格...',
+											//prefixIcon: Icon(Icons.search),
 										),
 									),
 								),
+								/*
+								Expanded(  // 使用 Expanded 讓 TextField 可以佔用 Row 中剩餘的空間
+									child: TextField(
+										controller: priceController,
+										keyboardType: TextInputType.number,  // 設定鍵盤類型為數字
+										decoration: InputDecoration(
+											hintText: '輸入價格',
+											filled: true,
+											fillColor: Colors.white,
+											border: OutlineInputBorder(),
+										),
+									),
+								),
+								*/
 							],
 					   ),
 					SizedBox(height: 16),
 					Align(
 							alignment: Alignment.centerLeft,
-							child: Text('分類', style: TextStyle(fontSize: 20, color: Colors.white)),
+							child: Text('分類', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
 					     ),
 					Container(
 							height: 200.0,
@@ -285,10 +297,10 @@ Future<void> uploadProductToFirebase() async {
 										});
 								},
                 children: const [
-                  Text('macbook pro', style: TextStyle(color: Colors.white, fontSize: 32.0)),
-                  Text('macbook air', style: TextStyle(color: Colors.white, fontSize: 32.0)),
-                  Text('ipad', style: TextStyle(color: Colors.white, fontSize: 32.0)),
-                  Text('iphone', style: TextStyle(color: Colors.white, fontSize: 32.0)),
+                  Text('macbook pro', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+                  Text('macbook air', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+                  Text('ipad', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+                  Text('iphone', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
                   ],
                 ),
 						 ),
