@@ -156,26 +156,43 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
                 ],
-              ),
+              ),          
               Container(
                 width: double.infinity,
+                height: 50.0,
                 child: ElevatedButton(
                   onPressed: () {
                     // 啟動 main_page.dart
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
                   },
-                  child: Text('Login in'),
-                  style: ElevatedButton.styleFrom(primary: Colors.blue[900], onPrimary: Colors.white),
+                  child: Text(
+                    'Login in',
+                    style: TextStyle(
+                      color: Color(0xFF4CAD73),
+                      fontFamily: 'Montserrat Alternates',
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                  ),
                 ),
               ),
-//
-              SizedBox(height: 3.0), // 加入這行，為按鈕提供間距
+              SizedBox(height: 15.0), // 加入這行，為按鈕提供間距
               Container(
                 width: double.infinity,
+                height: 50.0,
                 child: ElevatedButton(
                   onPressed: () => _handleGoogleSignIn(context),
-                  child: Text('Google Login'),
-                  style: ElevatedButton.styleFrom(primary: Colors.red, onPrimary: Colors.white),  // 使用Google的紅色
+                  child: Text(
+                    'Google Login',
+                    style: TextStyle(
+                      color: Color(0xFF4CAD73),
+                      fontFamily: 'Montserrat Alternates',
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                  ),
                 ),
               ),                
               SizedBox(height: 20.0),

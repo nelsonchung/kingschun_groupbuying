@@ -77,6 +77,23 @@ flutter:
     - assets/shadow.png
     - assets/man_leftside.png
     - assets/woman_rightside.png
+    - assets/appleid/imac_left.jpeg
+    - assets/appleid/imac.jpeg
+    - assets/appleid/ipad.jpeg
+    - assets/appleid/ipad9th.jpeg
+    - assets/appleid/ipad10th.jpeg
+    - assets/appleid/ipadair.jpeg
+    - assets/appleid/ipadmini.jpeg
+    - assets/appleid/ipadpro.jpeg
+    - assets/appleid/iphone13.jpeg
+    - assets/appleid/iphone14.jpeg
+    - assets/appleid/iphonese.jpeg
+    - assets/appleid/macair.jpeg
+    - assets/appleid/macbookpro.jpeg
+    - assets/appleid/macbookpro13.jpeg
+    - assets/appleid/macmini.jpeg
+    - assets/appleid/macpro.jpeg
+    - assets/appleid/macstudio.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
