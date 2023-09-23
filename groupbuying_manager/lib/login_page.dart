@@ -23,6 +23,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'main.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -79,6 +80,9 @@ class _LoginPageState extends State<LoginPage> {
         final snackBar = SnackBar(content: Text('登入失敗！'));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
+
+      // Navigate to the first page (MyApp)
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MyApp()));
     }
   }
 
@@ -98,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF4CAD73),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(  // <-- 添加此行
