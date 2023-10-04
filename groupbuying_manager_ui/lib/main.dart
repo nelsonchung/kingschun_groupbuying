@@ -22,14 +22,14 @@ class KangsayurLayout extends StatelessWidget {
       backgroundColor: Color(0xFF4CAD73),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 30.0),
               child: Column(
                 children: [
                   Text(
-                    'Kangsayur',
+                    'KingsChun購物網',
                     style: TextStyle(
                       fontSize: 32.0,
                       fontWeight: FontWeight.bold,
@@ -39,14 +39,9 @@ class KangsayurLayout extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Positioned(
-                        left: 150,
-                        child: Image.asset('assets/man_leftside.png'/*, width: width * 0.4*/),
-                      ),
-                      Positioned(
-                        right: 150,
-                        child: Image.asset('assets/woman_rightside.png'/*, width: width * 0.2*/),
-                      ),
+                      Image.asset('assets/man_leftside.png'),
+                      SizedBox(width: 20.0),
+                      Image.asset('assets/woman_rightside.png'),
                     ],
                   ),
                 ],
