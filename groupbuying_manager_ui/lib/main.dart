@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'login_page.dart';
-//import 'package:firebase_core/firebase_core.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,114 +6,58 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'KingsChun購物網',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
+      home: KangsayurLayout(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class KangsayurLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
-      backgroundColor: Color(0xFF4CAD73),
-      body: SingleChildScrollView(
+      backgroundColor: Colors.green[200],
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: height * 0.15),  // 使用螢幕高度的 5%
-            Text(
-              'KingsChun購物網',
-              style: GoogleFonts.montserratAlternates(
-                fontSize: width * 0.10,  // 使用螢幕寬度的 5%
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(height: height * 0.05),  // 使用螢幕高度的 2%
-            /*
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Positioned(
-                  left: 0,
-                  child: Image.asset('assets/man_leftside.png', width: width * 0.4),
-                ),
-                Positioned(
-                  right: 0,
-                  child: Image.asset('assets/woman_rightside.png', width: width * 0.2),
-                ),
-              ],
-            ),
-            */
-//
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Positioned(
-                  left: 150,
-                  child: Image.asset('assets/man_leftside.png', width: width * 0.4),
-                ),
-                Positioned(
-                  right: 150,
-                  child: Image.asset('assets/woman_rightside.png', width: width * 0.2),
-                ),
-              ],
-            ),
-//            
-            /*
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.asset('assets/man_leftside.png', width: width * 0.4),  // 使用螢幕寬度的 20%
-                Image.asset('assets/woman_rightside.png', width: width * 0.2),  // 使用螢幕寬度的 20%
-              ],
-            ),
-            */
-            SizedBox(height: height * 0.05),  // 使用螢幕高度的 2%
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
             Padding(
-              padding: EdgeInsets.all(height * 0.05),  // 使用螢幕高度的 2%
-              child: Text(
-                'KingsChun購物網是一個平台\n讓你輕鬆容易地macbook pro, \nmacbook air, ipad, iphone\n二手交易的apps',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.montserratAlternates(
-                  fontSize: width * 0.04,  // 使用螢幕寬度的 4%
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(height * 0.02),  // 使用螢幕高度的 2%
-              child: SizedBox(
-                width: width * 0.5,  // 使用螢幕寬度的 50%
-                height: height * 0.1,  // 使用螢幕高度的 7%
-                child: ElevatedButton(
-                  onPressed: () {
-                    /*
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
-                    */
-                  },
-                  child: Text(
-                    '開始使用',
+              padding: const EdgeInsets.only(top: 30.0),
+              child: Column(
+                children: [
+                  Text(
+                    'Kangsayur',
                     style: TextStyle(
-                      color: Color(0xFF4CAD73),
-                      fontFamily: 'Montserrat Alternates',
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
+                  SizedBox(height: 20.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('path_to_woman_with_groceries_image'),
+                      SizedBox(width: 20.0),
+                      Image.asset('path_to_man_with_vegetable_image'),
+                    ],
                   ),
-                ),
+                ],
+              ),
+            ),
+            Text(
+              'Kangsayur is a solution for Grocery\nShopping every you need',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 40.0, vertical: 30.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle button press here
+                },
+                child: Text('Get Started'),
               ),
             ),
           ],
