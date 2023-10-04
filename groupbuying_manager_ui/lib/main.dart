@@ -6,6 +6,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'KingsChun購物網',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: KangsayurLayout(),
     );
   }
@@ -15,7 +19,7 @@ class KangsayurLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[200],
+      backgroundColor: Color(0xFF4CAD73),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -33,18 +37,23 @@ class KangsayurLayout extends StatelessWidget {
                   ),
                   SizedBox(height: 20.0),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Image.asset('path_to_woman_with_groceries_image'),
-                      SizedBox(width: 20.0),
-                      Image.asset('path_to_man_with_vegetable_image'),
+                      Positioned(
+                        left: 150,
+                        child: Image.asset('assets/man_leftside.png'/*, width: width * 0.4*/),
+                      ),
+                      Positioned(
+                        right: 150,
+                        child: Image.asset('assets/woman_rightside.png'/*, width: width * 0.2*/),
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
             Text(
-              'Kangsayur is a solution for Grocery\nShopping every you need',
+              'KingsChun購物網是一個平台\n讓你輕鬆容易地macbook pro, \nmacbook air, ipad, iphone\n二手交易的apps',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20.0,
@@ -55,9 +64,23 @@ class KangsayurLayout extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 40.0, vertical: 30.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle button press here
+                  /*
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                  */
                 },
-                child: Text('Get Started'),
+                child: Text(
+                  '開始使用',
+                  style: TextStyle(
+                    color: Color(0xFF4CAD73),
+                    fontFamily: 'Montserrat Alternates',
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                ),
               ),
             ),
           ],
