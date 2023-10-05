@@ -64,11 +64,11 @@ class MyHomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Positioned(
-                  left: 150,
+                  //left: 150,
                   child: Image.asset('assets/man_leftside.png', width: width * 0.4),
                 ),
                 Positioned(
-                  right: 150,
+                  //right: 150,
                   child: Image.asset('assets/woman_rightside.png', width: width * 0.2),
                 ),
               ],
