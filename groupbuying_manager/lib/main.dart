@@ -25,99 +25,61 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Color(0xFF4CAD73),
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: height * 0.15),  // 使用螢幕高度的 5%
-            Text(
-              'KingsChun購物網',
-              style: GoogleFonts.montserratAlternates(
-                fontSize: width * 0.10,  // 使用螢幕寬度的 5%
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(height: height * 0.05),  // 使用螢幕高度的 2%
-            /*
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Positioned(
-                  left: 0,
-                  child: Image.asset('assets/man_leftside.png', width: width * 0.4),
-                ),
-                Positioned(
-                  right: 0,
-                  child: Image.asset('assets/woman_rightside.png', width: width * 0.2),
-                ),
-              ],
-            ),
-            */
-//
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Positioned(
-                  //left: 150,
-                  child: Image.asset('assets/man_leftside.png', width: width * 0.4),
-                ),
-                Positioned(
-                  //right: 150,
-                  child: Image.asset('assets/woman_rightside.png', width: width * 0.2),
-                ),
-              ],
-            ),
-//            
-            /*
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.asset('assets/man_leftside.png', width: width * 0.4),  // 使用螢幕寬度的 20%
-                Image.asset('assets/woman_rightside.png', width: width * 0.2),  // 使用螢幕寬度的 20%
-              ],
-            ),
-            */
-            SizedBox(height: height * 0.05),  // 使用螢幕高度的 2%
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             Padding(
-              padding: EdgeInsets.all(height * 0.05),  // 使用螢幕高度的 2%
-              child: Text(
-                'KingsChun購物網是一個平台\n讓你輕鬆容易地macbook pro, \nmacbook air, ipad, iphone\n二手交易的apps',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.montserratAlternates(
-                  fontSize: width * 0.04,  // 使用螢幕寬度的 4%
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(height * 0.02),  // 使用螢幕高度的 2%
-              child: SizedBox(
-                width: width * 0.5,  // 使用螢幕寬度的 50%
-                height: height * 0.1,  // 使用螢幕高度的 7%
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
-                  },
-                  child: Text(
-                    '開始使用',
+              padding: const EdgeInsets.only(top: 30.0),
+              child: Column(
+                children: [
+                  Text(
+                    'KingsChun購物網',
                     style: TextStyle(
-                      color: Color(0xFF4CAD73),
-                      fontFamily: 'Montserrat Alternates',
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
+                  SizedBox(height: 20.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Image.asset('assets/man_leftside.png'),
+                      SizedBox(width: 20.0),
+                      Image.asset('assets/woman_rightside.png'),
+                    ],
                   ),
+                ],
+              ),
+            ),
+            Text(
+              'KingsChun購物網是一個平台\n讓你輕鬆容易地macbook pro, \nmacbook air, ipad, iphone\n二手交易的apps',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 40.0, vertical: 30.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+                child: Text(
+                  '開始使用',
+                  style: TextStyle(
+                    color: Color(0xFF4CAD73),
+                    fontFamily: 'Montserrat Alternates',
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
                 ),
               ),
             ),
