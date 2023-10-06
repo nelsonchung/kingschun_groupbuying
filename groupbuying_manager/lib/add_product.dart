@@ -64,10 +64,10 @@ class _AddProductPageState extends State<AddProductPgae> {
 	File? _image;
 	final picker = ImagePicker();
 	String dropdownValue = 'macbook pro';
-  TextEditingController nameController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-  int selectedQuantity=0;
+	TextEditingController nameController = TextEditingController();
+	TextEditingController descriptionController = TextEditingController();
+	TextEditingController priceController = TextEditingController();
+	int selectedQuantity=0;
 
 
 	Future getImage(bool isCamera) async {
@@ -83,55 +83,55 @@ class _AddProductPageState extends State<AddProductPgae> {
 				});
 	}
 
-Future<void> uploadProductToFirebase() async {
-  try {
-    if (_image != null) {
-      // 上傳圖片到 Firebase Storage
-      final FirebaseStorage storage = FirebaseStorage.instanceFor(bucket: 'gs://groupbuying-9d07b.appspot.com');
-      Reference storageReference = storage.ref().child('products/${DateTime.now().toIso8601String()}.png');
-      UploadTask uploadTask = storageReference.putFile(_image!);
+	Future<void> uploadProductToFirebase() async {
+		try {
+			if (_image != null) {
+				// 上傳圖片到 Firebase Storage
+				final FirebaseStorage storage = FirebaseStorage.instanceFor(bucket: 'gs://groupbuying-9d07b.appspot.com');
+				Reference storageReference = storage.ref().child('products/${DateTime.now().toIso8601String()}.png');
+				UploadTask uploadTask = storageReference.putFile(_image!);
 
-      try {
-        await uploadTask.whenComplete(() {});
-      } catch (e) {
-        print("上傳圖片錯誤: $e");
-        return; // 如果上傳圖片失敗，則返回以避免進一步的操作
-      }
+				try {
+					await uploadTask.whenComplete(() {});
+				} catch (e) {
+					print("上傳圖片錯誤: $e");
+					return; // 如果上傳圖片失敗，則返回以避免進一步的操作
+				}
 
-      // 獲取上傳圖片的 URL
-      String imageUrl;
-      try {
-        imageUrl = await storageReference.getDownloadURL();
-      } catch (e) {
-        print("獲取圖片 URL 錯誤: $e");
-        return;
-      }
+				// 獲取上傳圖片的 URL
+				String imageUrl;
+				try {
+					imageUrl = await storageReference.getDownloadURL();
+				} catch (e) {
+					print("獲取圖片 URL 錯誤: $e");
+					return;
+				}
 
-      // 使用 imageUrl 和其他資訊存儲資料到 Cloud Firestore
-      try {
-        CollectionReference products = FirebaseFirestore.instance.collection('products');
-        Map<String, dynamic> productData = {
-          'name': nameController.text,
-          'description': descriptionController.text,
-          'price': int.parse(priceController.text),
-          'quantity': selectedQuantity,
-          'photo': imageUrl,
-          'shop': 'KingsChun',
-          'category': dropdownValue,
-        };
-        await products.add(productData);
+				// 使用 imageUrl 和其他資訊存儲資料到 Cloud Firestore
+				try {
+					CollectionReference products = FirebaseFirestore.instance.collection('products');
+					Map<String, dynamic> productData = {
+						'name': nameController.text,
+						'description': descriptionController.text,
+						'price': int.parse(priceController.text),
+						'quantity': selectedQuantity,
+						'photo': imageUrl,
+						'shop': 'KingsChun',
+						'category': dropdownValue,
+					};
+					await products.add(productData);
 
-        // 打印產品資料
-        print("已添加的產品資料: $productData");
+					// 打印產品資料
+					print("已添加的產品資料: $productData");
 
-      } catch (e) {
-        print("寫入 Firestore 錯誤: $e");
-      }
-    }
-  } catch (e) {
-    print("未預期的錯誤: $e");
-  }
-}
+				} catch (e) {
+					print("寫入 Firestore 錯誤: $e");
+				}
+			}
+		} catch (e) {
+			print("未預期的錯誤: $e");
+		}
+	}
 
 
 	@override
@@ -184,13 +184,13 @@ Future<void> uploadProductToFirebase() async {
 							child: Text('商品標題', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
 					     ),
 					TextField(
-            controller: nameController,
-						maxLength: 50,
-						decoration: InputDecoration(
-							labelText: '商品標題',
-							border: OutlineInputBorder(),
-							),
-				 ),
+							controller: nameController,
+							maxLength: 50,
+							decoration: InputDecoration(
+								labelText: '商品標題',
+								border: OutlineInputBorder(),
+								),
+						 ),
 					SizedBox(height: 16),
 					const Divider(
 							//height: 20,
@@ -204,7 +204,7 @@ Future<void> uploadProductToFirebase() async {
 							child: Text('商品描述', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
 					     ),
 					TextField(
-              controller: descriptionController,
+							controller: descriptionController,
 							maxLines: 4,
 							maxLength: 200,
 							decoration: InputDecoration(
@@ -231,14 +231,14 @@ Future<void> uploadProductToFirebase() async {
 								backgroundColor: Color(0xFF4CAD73),
 								itemExtent: 32.0,
 								onSelectedItemChanged: (int index) {
-								    setState(() {
-                      selectedQuantity = index + 1;  // 加1來獲取正確的數量
-                    });
+								setState(() {
+										selectedQuantity = index + 1;  // 加1來獲取正確的數量
+										});
 								},
-                children: List<Widget>.generate(99, (int index) {
-                      return Text('${index + 1}', style: TextStyle(color: Colors.white, fontSize: title_fontsize));
-                      }),
-                ),
+children: List<Widget>.generate(99, (int index) {
+		  return Text('${index + 1}', style: TextStyle(color: Colors.white, fontSize: title_fontsize));
+		  }),
+),
 						 ),
 					SizedBox(height: 16),
 					const Divider(
@@ -251,87 +251,87 @@ Future<void> uploadProductToFirebase() async {
 					// 價格的CupertinoPicker
 					Row(
 							children: <Widget>[
-								Align(
-									alignment: Alignment.centerLeft,
-									child: Text('價格', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
-									),
-								SizedBox(width: 16),  // 提供一些間距
-								//
-								Expanded(
-									child: TextField(
-										decoration: InputDecoration(
-											hintText: '輸入價格...',
-											//prefixIcon: Icon(Icons.search),
+							Align(
+								alignment: Alignment.centerLeft,
+								child: Text('價格', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
+							     ),
+							SizedBox(width: 16),  // 提供一些間距
+									      //
+							Expanded(
+								child: TextField(
+									decoration: InputDecoration(
+										hintText: '輸入價格...',
+										//prefixIcon: Icon(Icons.search),
 										),
 									),
 								),
-								/*
-								Expanded(  // 使用 Expanded 讓 TextField 可以佔用 Row 中剩餘的空間
-									child: TextField(
-										controller: priceController,
-										keyboardType: TextInputType.number,  // 設定鍵盤類型為數字
-										decoration: InputDecoration(
-											hintText: '輸入價格',
-											filled: true,
-											fillColor: Colors.white,
-											border: OutlineInputBorder(),
-										),
-									),
-								),
-								*/
-							],
-					   ),
-					SizedBox(height: 16),
-					Align(
-							alignment: Alignment.centerLeft,
-							child: Text('分類', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
-					     ),
-					Container(
-							height: 200.0,
-							child: CupertinoPicker(
-								backgroundColor: Color(0xFF4CAD73),
-								itemExtent: 52.0,
-								onSelectedItemChanged: (int index) {
-								setState(() {
-										dropdownValue = ['macbook pro', 'macbook air', 'ipad', 'iphone'][index];
-										});
-								},
-                children: const [
-                  Text('macbook pro', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
-                  Text('macbook air', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
-                  Text('ipad', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
-                  Text('iphone', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
-                  ],
-                ),
-						 ),
-					],
-					),
-					),
-					),
-					// 儲存與上架按鈕
-					bottomNavigationBar: Row(
-							mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-							children: [
-							Expanded(
-								child: ElevatedButton(
-									style: ElevatedButton.styleFrom(primary: Color(0xFF4CAD73)),
-									child: Text('儲存', style: TextStyle(fontSize: 20)),
-									onPressed: () {
-									// Implement save functionality
-									},
-									),
-								),
-							Expanded(
-								child: ElevatedButton(
-									style: ElevatedButton.styleFrom(primary: Color(0xFF4CAD73)),
-									child: Text('上架', style: TextStyle(fontSize: 20)),
-									onPressed: () {
-									uploadProductToFirebase();
-									},
-									),
-								),
+							/*
+							   Expanded(  // 使用 Expanded 讓 TextField 可以佔用 Row 中剩餘的空間
+							   child: TextField(
+							   controller: priceController,
+							   keyboardType: TextInputType.number,  // 設定鍵盤類型為數字
+							   decoration: InputDecoration(
+							   hintText: '輸入價格',
+							   filled: true,
+							   fillColor: Colors.white,
+							   border: OutlineInputBorder(),
+							   ),
+							   ),
+							   ),
+							 */
 							],
 							),
-							);
+							SizedBox(height: 16),
+							Align(
+									alignment: Alignment.centerLeft,
+									child: Text('分類', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
+							     ),
+							Container(
+									height: 200.0,
+									child: CupertinoPicker(
+										backgroundColor: Color(0xFF4CAD73),
+										itemExtent: 52.0,
+										onSelectedItemChanged: (int index) {
+										setState(() {
+												dropdownValue = ['macbook pro', 'macbook air', 'ipad', 'iphone'][index];
+												});
+										},
+children: const [
+Text('macbook pro', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+Text('macbook air', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+Text('ipad', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+Text('iphone', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+],
+),
+								 ),
+							],
+							),
+							),
+							),
+							// 儲存與上架按鈕
+							bottomNavigationBar: Row(
+									mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+									children: [
+									Expanded(
+										child: ElevatedButton(
+											style: ElevatedButton.styleFrom(primary: Color(0xFF4CAD73)),
+											child: Text('儲存', style: TextStyle(fontSize: 20)),
+											onPressed: () {
+											// Implement save functionality
+											},
+											),
+										),
+									Expanded(
+										child: ElevatedButton(
+											style: ElevatedButton.styleFrom(primary: Color(0xFF4CAD73)),
+											child: Text('上架', style: TextStyle(fontSize: 20)),
+											onPressed: () {
+											uploadProductToFirebase();
+											},
+											),
+										),
+									],
+									),
+									);
 		}
 }
