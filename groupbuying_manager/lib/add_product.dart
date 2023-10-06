@@ -124,12 +124,34 @@ class _AddProductPageState extends State<AddProductPgae> {
 					// 打印產品資料
 					print("已添加的產品資料: $productData");
 
+					// 顯示成功的 SnackBar
+					ScaffoldMessenger.of(context).showSnackBar(
+						SnackBar(
+						content: Text('商品成功上架！'),
+						backgroundColor: Colors.green,
+						),
+					);
 				} catch (e) {
 					print("寫入 Firestore 錯誤: $e");
+
+					// 顯示失敗的 SnackBar
+					ScaffoldMessenger.of(context).showSnackBar(
+						SnackBar(
+						content: Text('商品上架失敗: $e'),
+						backgroundColor: Colors.red,
+						),
+					);
 				}
 			}
 		} catch (e) {
 			print("未預期的錯誤: $e");
+			// 顯示失敗的 SnackBar
+			ScaffoldMessenger.of(context).showSnackBar(
+				SnackBar(
+					content: Text('未預期的錯誤: $e'),
+					backgroundColor: Colors.red,
+				),
+			);
 		}
 	}
 
@@ -235,10 +257,10 @@ class _AddProductPageState extends State<AddProductPgae> {
 										selectedQuantity = index + 1;  // 加1來獲取正確的數量
 										});
 								},
-children: List<Widget>.generate(99, (int index) {
-		  return Text('${index + 1}', style: TextStyle(color: Colors.white, fontSize: title_fontsize));
-		  }),
-),
+								children: List<Widget>.generate(99, (int index) {
+										return Text('${index + 1}', style: TextStyle(color: Colors.white, fontSize: title_fontsize));
+								}),
+							),
 						 ),
 					SizedBox(height: 16),
 					const Divider(
@@ -254,16 +276,18 @@ children: List<Widget>.generate(99, (int index) {
 							Align(
 								alignment: Alignment.centerLeft,
 								child: Text('價格', style: TextStyle(fontSize: title_fontsize, color: Colors.white)),
-							     ),
+							),
 							SizedBox(width: 16),  // 提供一些間距
 									      //
 							Expanded(
 								child: TextField(
+									controller: priceController,  // 指定 controller
 									decoration: InputDecoration(
-										hintText: '輸入價格...',
-										//prefixIcon: Icon(Icons.search),
-										),
+									hintText: '輸入價格...',
+									//prefixIcon: Icon(Icons.search),
 									),
+									keyboardType: TextInputType.number,  // 增加這一行，只允許數字輸入
+								),
 								),
 							/*
 							   Expanded(  // 使用 Expanded 讓 TextField 可以佔用 Row 中剩餘的空間
@@ -296,13 +320,13 @@ children: List<Widget>.generate(99, (int index) {
 												dropdownValue = ['macbook pro', 'macbook air', 'ipad', 'iphone'][index];
 												});
 										},
-children: const [
-Text('macbook pro', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
-Text('macbook air', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
-Text('ipad', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
-Text('iphone', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
-],
-),
+										children: const [
+										Text('macbook pro', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+										Text('macbook air', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+										Text('ipad', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+										Text('iphone', style: TextStyle(color: Colors.white, fontSize: title_fontsize)),
+										],
+									),
 								 ),
 							],
 							),
